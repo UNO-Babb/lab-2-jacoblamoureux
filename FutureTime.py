@@ -9,15 +9,21 @@ import datetime
 def main():
   #getting current time from system, storing to variable
   now = datetime.datetime.now()
-  currentHour = now.hour
+  currentHour = (now.hour + 6) % 12
   currentMinute = now.minute
-
-  print (currentHour, currentMinute) #this is just for checking, we should delete it later
 
   #TODO:
   #Ask user for hours
-  #Ask user for minutes
+  morehour = int(input('Enter number of hours:'))
+  futurehour = (currentHour + morehour) % 12
 
+  #Ask user for minute
+  moremins = int(input('Enter number of minutes:'))
+  futuremins = (currentMinute + moremins ) % 60
+  extrahour = (currentMinute + moremins) // 60
+  bighour = (futurehour + extrahour) % 12
+  
+  print("Future time is", bighour,":",futuremins)
   #Calculate the time after the user-supplied time has passed.
 
   #Do not use any if statements in calculating the time.
